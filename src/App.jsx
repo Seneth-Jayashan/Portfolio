@@ -6,6 +6,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Contact from './pages/Contacts';
+import RoadMap from './pages/RoadMap';
 import Footer from './components/Footer';
 import Skills from './pages/skills';
 import KHB from './projects/khb';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/services" element={<Services />} />
         <Route path="/skills" element={<Skills />} />
+        <Route path="/roadmap" element={<RoadMap />} />
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/projects/khb" element={<KHB />} />
