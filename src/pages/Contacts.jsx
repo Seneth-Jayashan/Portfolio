@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
 import {
   FaEnvelope,
   FaPhoneAlt,
@@ -9,8 +8,15 @@ import {
   FaLinkedinIn,
   FaWhatsapp,
 } from 'react-icons/fa';
+import { useAnimeIntro, useAnimeStagger, useScrollParallax } from '../hooks/useAnimeMotion';
 
 export default function Contacts() {
+  const scopeRef = useRef(null);
+
+  useAnimeIntro(scopeRef, []);
+  useAnimeStagger(scopeRef, '.reveal-item', []);
+  useScrollParallax(scopeRef, '.scroll-parallax', []);
+
   const contactDetails = [
     {
       icon: <FaEnvelope size={20} />,
@@ -54,63 +60,51 @@ export default function Contacts() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white py-24 px-6">
-      <motion.div
-        className="max-w-4xl mx-auto text-center"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="text-4xl font-bold text-cyan-400 mb-6">Let’s Talk</h2>
-        <p className="text-gray-300 text-lg mb-12">
-          Whether you have a project idea or just want to say hi, my inbox is always open.
+    <section className="page-wrap" ref={scopeRef}>
+      <div className="max-w-5xl scroll-parallax" data-speed="0.14" data-depth="1.1">
+        <p className="section-kicker" data-intro>
+          Contact
         </p>
+        <h2 className="section-title mt-2 mb-3" data-intro>
+          Let us build your next digital product.
+        </h2>
+        <p className="section-copy text-lg mb-8" data-intro>
+          If you are planning a new website, redesign, or full-stack product, reach out and I will help shape the best technical path.
+        </p>
+      </div>
 
-        <div className="grid sm:grid-cols-2 gap-8 text-left mb-16">
-          {contactDetails.map((item, index) => (
-            <motion.div
+      <div className="grid md:grid-cols-2 gap-5">
+        {contactDetails.map((item, index) => (
+          <article key={index} className="glass rounded-3xl p-6 reveal-item scroll-parallax" data-speed="0.22" data-depth="0.8">
+            <div className="text-teal-300 mb-3 text-xl">{item.icon}</div>
+            <h4 className="text-xl font-semibold mb-1">{item.title}</h4>
+            {item.link ? (
+              <a href={item.link} className="text-slate-300 hover:text-teal-300 transition" target="_blank" rel="noopener noreferrer">
+                {item.value}
+              </a>
+            ) : (
+              <p className="text-slate-300">{item.value}</p>
+            )}
+          </article>
+        ))}
+      </div>
+
+      <div className="glass rounded-3xl p-6 mt-5 reveal-item scroll-parallax" data-speed="0.18" data-depth="0.95">
+        <h3 className="text-xl font-semibold text-teal-300 mb-3">Social Links</h3>
+        <div className="flex gap-3">
+          {socialLinks.map((social, index) => (
+            <a
               key={index}
-              className="bg-gray-800 rounded-xl p-6 shadow-lg flex gap-4 items-start hover:scale-105 transition-transform"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-11 h-11 rounded-full bg-slate-600/35 hover:bg-teal-400/30 transition grid place-items-center"
             >
-              <div className="text-cyan-400 mt-1">{item.icon}</div>
-              <div>
-                <h4 className="text-lg font-semibold text-white mb-1">{item.title}</h4>
-                {item.link ? (
-                  <a
-                    href={item.link}
-                    className="text-gray-300 hover:text-cyan-400 transition"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {item.value}
-                  </a>
-                ) : (
-                  <p className="text-gray-300">{item.value}</p>
-                )}
-              </div>
-            </motion.div>
+              {social.icon}
+            </a>
           ))}
         </div>
-
-        <div className="text-center">
-          <h3 className="text-xl font-semibold text-cyan-400 mb-3">Connect with Me</h3>
-          <div className="flex justify-center gap-6">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white bg-gray-700 hover:bg-cyan-500 p-3 rounded-full transition"
-              >
-                {social.icon}
-              </a>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    </div>
+      </div>
+    </section>
   );
 }

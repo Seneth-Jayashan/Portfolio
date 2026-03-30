@@ -1,13 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
 import { FaCode, FaPaintBrush, FaServer, FaTools, FaWordpress } from 'react-icons/fa';
+import { useAnimeIntro, useAnimeStagger, useScrollParallax } from '../hooks/useAnimeMotion';
 
 export default function Services() {
+  const scopeRef = useRef(null);
+
+  useAnimeIntro(scopeRef, []);
+  useAnimeStagger(scopeRef, '.reveal-item', []);
+  useScrollParallax(scopeRef, '.scroll-parallax', []);
+
   const services = [
     {
       icon: <FaCode size={30} />,
       title: "Frontend Development",
-      description: "Beautiful, responsive interfaces using React, Tailwind CSS, and Framer Motion.",
+      description: 'Beautiful, responsive interfaces built with React, Tailwind CSS, and anime-powered interactions.',
     },
     {
       icon: <FaServer size={30} />,
@@ -32,35 +38,31 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-white py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-4xl font-bold text-center mb-12 text-cyan-400"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          My Services
-        </motion.h2>
-
-        <div className="grid md:grid-cols-3 gap-10">
-          {services.map((service, index) => (
-            <motion.div
-                key={index}
-                className="bg-gray-800 rounded-xl p-8 text-center shadow-lg hover:shadow-cyan-500/30 transition cursor-pointer"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                >
-                <div className="text-cyan-400 mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-300">{service.description}</p>
-            </motion.div>
-          ))}
-        </div>
+    <section className="page-wrap" ref={scopeRef}>
+      <div className="mb-8 md:mb-10 scroll-parallax" data-speed="0.15" data-depth="1.1">
+        <p className="section-kicker" data-intro>
+          Services
+        </p>
+        <h2 className="section-title mt-2" data-intro>
+          End-to-end web services for serious growth.
+        </h2>
       </div>
-    </div>
+
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {services.map((service, index) => (
+          <article key={index} className="glass rounded-3xl p-6 md:p-7 reveal-item scroll-parallax" data-speed="0.22" data-depth="0.8">
+            <div className="text-teal-300 mb-4 text-3xl">{service.icon}</div>
+            <h3 className="text-2xl font-semibold mb-2">{service.title}</h3>
+            <p className="section-copy">{service.description}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="glass rounded-3xl p-6 md:p-7 mt-6 reveal-item scroll-parallax" data-speed="0.18" data-depth="0.95">
+        <p className="text-lg text-slate-100">
+          Need a custom combination? I can handle design systems, API integrations, migrations, and performance optimization as part of your build.
+        </p>
+      </div>
+    </section>
   );
 }

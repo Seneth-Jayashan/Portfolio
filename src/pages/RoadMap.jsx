@@ -1,7 +1,7 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from 'react';
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaDatabase, FaWordpress, FaJs, FaPhp, FaLaravel, FaDocker, FaGitAlt } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiNextdotjs, SiGraphql, SiTailwindcss } from "react-icons/si";
+import { SiMongodb, SiExpress, SiNextdotjs, SiGraphql, SiTailwindcss, SiTensorflow, SiPython } from "react-icons/si";
+import { useAnimeIntro, useAnimeStagger } from '../hooks/useAnimeMotion';
 
 const roadmap = [
   {
@@ -43,111 +43,102 @@ const roadmap = [
   },
   {
     year: "2025",
+    frontend: [
+        { name: "Next.js", icon: <SiNextdotjs /> },
+        { name: "UI/UX Design", icon: <FaGitAlt /> },
+      ],
+    backend:  [
+        { name: "Docker", icon: <FaDocker /> },
+        { name: "GraphQL", icon: <SiGraphql /> },
+      ],
+  },
+  {
+    year: "2026",
+    frontend: [
+      { name: "Astro JS", icon: <SiNextdotjs /> },
+    ],
+    backend: [
+      { name: "Laravel", icon: <FaLaravel /> },
+    ],
+  },
+  {
+    year: "2027",
     frontend: [],
     backend: [],
     nextTarget: {
       frontend: [
-        { name: "Next.js", icon: <SiNextdotjs /> },
-        { name: "UI/UX Design", icon: <FaGitAlt /> },
+        { name: "AI/ML", icon: <SiTensorflow /> },
       ],
       backend: [
-        { name: "Docker", icon: <FaDocker /> },
-        { name: "GraphQL", icon: <SiGraphql /> },
+        { name: "AI/ML Engineering", icon: <SiPython /> },
       ],
     },
   },
 ];
 
 export default function RoadmapTimeline() {
+  const scopeRef = useRef(null);
+
+  useAnimeIntro(scopeRef, []);
+  useAnimeStagger(scopeRef, '.reveal-item', []);
+
   return (
-    <div className="bg-black text-white py-24 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-cyan-400 mb-16">Roadmap Timeline</h2>
-
-        <div className="relative">
-          {/* Vertical Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-cyan-500 z-0" />
-
-          {roadmap.map((section, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="mb-20 relative flex flex-col md:flex-row md:items-start"
-            >
-              {/* Frontend (Left Side) */}
-              <div className="w-full md:w-1/2 md:pr-8 text-right md:text-right z-10">
-                <h3 className="text-2xl font-bold text-cyan-300 mb-2">{section.year}</h3>
-
-                {section.frontend.length > 0 && (
-                  <div className="mb-4">
-                    <h4 className="text-xl font-semibold text-white mb-2">Frontend</h4>
-                    <div className="flex flex-wrap gap-3 justify-end">
-                      {section.frontend.map((item, i) => (
-                        <div key={i} className="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-full hover:bg-cyan-800 transition">
-                          <span className="text-lg">{item.icon}</span>
-                          <span className="text-sm">{item.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Dot in the middle */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-cyan-400 rounded-full border-4 border-black top-6 z-10" />
-
-              {/* Backend (Right Side) */}
-              <div className="w-full md:w-1/2 md:pl-8 mt-10 md:mt-0 z-10">
-                {section.backend.length > 0 && (
-                  <div className="mb-4">
-                    <h4 className="text-xl font-semibold text-white mb-2">Backend</h4>
-                    <div className="flex flex-wrap gap-3">
-                      {section.backend.map((item, i) => (
-                        <div key={i} className="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-full hover:bg-cyan-800 transition">
-                          <span className="text-lg">{item.icon}</span>
-                          <span className="text-sm">{item.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Show Next Target only in the final year */}
-                {section.nextTarget && (
-                  <div className="mt-4 p-4 bg-gray-900 border border-cyan-400 rounded-xl shadow-lg">
-                    <h4 className="text-cyan-300 font-bold mb-3">🎯 Next Target</h4>
-                    <div className="mb-2">
-                      <p className="font-semibold text-sm mb-1">Frontend:</p>
-                      <div className="flex flex-wrap gap-2">
-                        {section.nextTarget.frontend.map((item, i) => (
-                          <div key={i} className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full hover:bg-cyan-800 transition">
-                            <span className="text-lg">{item.icon}</span>
-                            <span className="text-sm">{item.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="mt-3">
-                      <p className="font-semibold text-sm mb-1">Backend:</p>
-                      <div className="flex flex-wrap gap-2">
-                        {section.nextTarget.backend.map((item, i) => (
-                          <div key={i} className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full hover:bg-cyan-800 transition">
-                            <span className="text-lg">{item.icon}</span>
-                            <span className="text-sm">{item.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+    <section className="page-wrap" ref={scopeRef}>
+      <div className="mb-8 md:mb-10">
+        <p className="section-kicker" data-intro>
+          Roadmap
+        </p>
+        <h2 className="section-title mt-2" data-intro>
+          Learning timeline and next milestones.
+        </h2>
       </div>
-    </div>
+
+      <div className="space-y-5 relative before:absolute before:left-[15px] md:before:left-[19px] before:top-2 before:bottom-2 before:w-[2px] before:bg-teal-300/35">
+        {roadmap.map((section, index) => (
+          <article key={index} className="glass rounded-3xl p-5 md:p-7 reveal-item relative ml-8 md:ml-10">
+            <span className="absolute -left-9 md:-left-10 top-6 w-5 h-5 rounded-full bg-teal-300 shadow-[0_0_0_5px_rgba(61,216,193,0.18)]" />
+            <h3 className="text-2xl font-semibold text-teal-300 mb-4">{section.year}</h3>
+
+            <div className="grid md:grid-cols-2 gap-5">
+              <div>
+                <h4 className="font-semibold mb-2">Frontend</h4>
+                <div className="flex flex-wrap gap-2">
+                  {section.frontend.map((item, i) => (
+                    <span key={i} className="tag-chip flex items-center gap-2">{item.icon} {item.name}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">Backend</h4>
+                <div className="flex flex-wrap gap-2">
+                  {section.backend.map((item, i) => (
+                    <span key={i} className="tag-chip flex items-center gap-2">{item.icon} {item.name}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {section.nextTarget && (
+              <div className="mt-5 border border-amber-300/30 bg-amber-200/10 rounded-2xl p-4">
+                <p className="font-semibold text-amber-300 mb-3">Next target</p>
+                <div className="grid md:grid-cols-2 gap-3">
+                  <div className="flex flex-wrap gap-2">
+                    {section.nextTarget.frontend.map((item, i) => (
+                      <span key={i} className="tag-chip flex items-center gap-2">{item.icon} {item.name}</span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {section.nextTarget.backend.map((item, i) => (
+                      <span key={i} className="tag-chip flex items-center gap-2">{item.icon} {item.name}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }

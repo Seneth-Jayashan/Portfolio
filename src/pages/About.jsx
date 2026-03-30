@@ -1,43 +1,46 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { useAnimeIntro, useAnimeStagger, useScrollParallax } from '../hooks/useAnimeMotion';
 
 export default function About() {
+  const scopeRef = useRef(null);
+
+  useAnimeIntro(scopeRef, []);
+  useAnimeStagger(scopeRef, '.reveal-item', []);
+  useScrollParallax(scopeRef, '.scroll-parallax', []);
+
   return (
-    <div className="min-h-screen px-10 py-40 bg-gradient-to-br from-gray-900 to-black text-white">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        
-        {/* Text Section */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <h2 className="text-4xl font-bold text-cyan-400 mb-6">About Me</h2>
-          <p className="text-gray-300 leading-relaxed text-lg">
-            I'm <span className="text-white font-medium">Seneth Jayashan</span>, the founder of
-            <span className="text-cyan-400 font-semibold"> S JAY Web Solutions (Pvt) Ltd</span>.  
-            With a passion for full-stack web development, I specialize in building clean, scalable, and high-performance web applications using the MERN stack, Tailwind CSS, and Framer Motion.
+    <section className="page-wrap" ref={scopeRef}>
+      <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-stretch">
+        <div className="glass rounded-3xl p-6 md:p-8 lg:p-10 scroll-parallax" data-speed="0.14" data-depth="1.1">
+          <p className="section-kicker" data-intro>
+            About
           </p>
-
-          <p className="text-gray-400 mt-4">
-            My mission is to help businesses and individuals bring their ideas to life through visually compelling and technically robust digital solutions. I believe in writing clean code, designing with purpose, and delivering results that exceed expectations.
+          <h2 className="section-title mt-3 mb-5" data-intro>
+            Engineering-forward, brand-aware digital work.
+          </h2>
+          <p className="section-copy text-lg" data-intro>
+            I am Seneth Jayashan, founder of S JAY Web Solutions (Pvt) Ltd. I partner with startups and established businesses to design and develop websites that are visually strong and technically dependable.
           </p>
-        </motion.div>
+          <p className="section-copy mt-4" data-intro>
+            My process blends strategy, UX, and full-stack execution. Every build is focused on speed, accessibility, and real-world business outcomes.
+          </p>
+        </div>
 
-        {/* Image Section */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="flex justify-center"
-        >
-          <img
-            src="/logo.png"
-            alt="S JAY Web Solutions (Pvt) Ltd Logo"
-            className="w-72 h-72 rounded-2xl object-cover shadow-lg"
-          />
-        </motion.div>
+        <div className="grid gap-4">
+          <div className="glass rounded-3xl p-6 reveal-item scroll-parallax" data-speed="0.2" data-depth="0.85">
+            <h3 className="text-xl font-semibold text-teal-300 mb-2">Core Focus</h3>
+            <p className="section-copy">Modern React interfaces, scalable Node.js backends, and meaningful animation systems that improve clarity and engagement.</p>
+          </div>
+          <div className="glass rounded-3xl p-6 reveal-item scroll-parallax" data-speed="0.25" data-depth="0.85">
+            <h3 className="text-xl font-semibold text-amber-300 mb-2">How I Work</h3>
+            <p className="section-copy">I keep communication clear, milestones predictable, and code quality high from kickoff to deployment.</p>
+          </div>
+          <div className="glass rounded-3xl p-6 reveal-item flex items-center gap-5 scroll-parallax" data-speed="0.3" data-depth="0.85">
+            <img src="/logo.png" alt="S JAY Web Solutions Logo" className="w-20 h-20 rounded-2xl ring-2 ring-teal-300/45" />
+            <p className="section-copy">Trusted by clients who want premium execution, practical architecture, and long-term maintainability.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
