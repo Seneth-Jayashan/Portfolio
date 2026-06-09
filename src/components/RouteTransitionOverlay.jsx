@@ -4,13 +4,14 @@ import { routeTransitionPresets } from '../config/experienceTuning';
 
 export default function RouteTransitionOverlay({ routeKey, preset = 'dramatic' }) {
   const overlayRef = useRef(null);
-  const beamRef = useRef(null);
-  const glowRef = useRef(null);
-  const profile = routeTransitionPresets[preset] || routeTransitionPresets.dramatic;
+  const beamRef    = useRef(null);
+  const glowRef    = useRef(null);
+  const profile    = routeTransitionPresets[preset] || routeTransitionPresets.dramatic;
 
   useEffect(() => {
     if (!overlayRef.current || !beamRef.current || !glowRef.current) return undefined;
 
+    /* Run all three in parallel */
     const overlayAnim = animate(overlayRef.current, {
       opacity: profile.overlayOpacity,
       duration: profile.duration,
@@ -38,7 +39,11 @@ export default function RouteTransitionOverlay({ routeKey, preset = 'dramatic' }
   }, [routeKey, profile]);
 
   return (
-    <div className={`route-overlay ${preset === 'minimal' ? 'route-overlay-minimal' : 'route-overlay-dramatic'}`} ref={overlayRef}>
+    <div
+      className={`route-overlay ${preset === 'minimal' ? 'route-overlay-minimal' : 'route-overlay-dramatic'}`}
+      ref={overlayRef}
+      aria-hidden="true"
+    >
       <div className="route-overlay-beam" ref={beamRef} />
       <div className="route-overlay-glow" ref={glowRef} />
     </div>

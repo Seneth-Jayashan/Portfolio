@@ -1,72 +1,143 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>Seneth Jayashan | Web Design & Development in Colombo, Sri Lanka - S JAY Web Solutions</title>
-    <meta name="description" content="S JAY Web Solutions (Pvt) Ltd, founded by Seneth Jayashan, offers professional web design, development, SEO, and digital marketing services in Colombo, Sri Lanka. Get a custom website tailored for your business success.">
-    <meta name="keywords" content="web design Colombo, web development Sri Lanka, Seneth Jayashan, S JAY Web Solutions, custom websites, e-commerce development, SEO services Colombo, digital marketing Sri Lanka, UI/UX design, mobile app development Colombo">
-    <link rel="canonical" href="https://www.sjaywebsolutions.com/" /> <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.sjaywebsolutions.com/"> <meta property="og:title" content="Seneth Jayashan | Web Design & Development in Colombo, Sri Lanka - S JAY Web Solutions">
-    <meta property="og:description" content="S JAY Web Solutions (Pvt) Ltd, founded by Seneth Jayashan, offers professional web design, development, SEO, and digital marketing services in Colombo, Sri Lanka.">
-    <meta property="og:image" content="https://www.sjaywebsolutions.com/logo.png"> <meta property="og:image:alt" content="S JAY Web Solutions Logo and Modern Website Design Example">
+    <!-- ─── Primary Meta (overridden per-route by SEOHead.jsx) ──────── -->
+    <title>Seneth Jayashan — Full-Stack Web Developer | S JAY Web Solutions</title>
+    <meta name="description" content="Seneth Jayashan builds fast, animated, and conversion-focused websites. Founder of S JAY Web Solutions — React, Node.js, and full-stack development in Sri Lanka." />
+    <meta name="keywords" content="web developer Sri Lanka, full-stack developer Colombo, React developer, Node.js developer, S JAY Web Solutions, Seneth Jayashan, portfolio" />
+    <meta name="author" content="Seneth Jayashan" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#080e1c" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="google" content="nositelinkssearchbox" />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.sjaywebsolutions.com/"> <meta name="twitter:title" content="Seneth Jayashan | Web Design & Development in Colombo, Sri Lanka - S JAY Web Solutions">
-    <meta name="twitter:description" content="S JAY Web Solutions (Pvt) Ltd, founded by Seneth Jayashan, offers professional web design, development, SEO, and digital marketing services in Colombo, Sri Lanka.">
-    <meta name="twitter:image" content="https://www.sjaywebsolutions.com/logo.png"> <meta name="twitter:creator" content="@YourTwitterHandle"> <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
-    <link rel="mask-icon" href="/logo.png" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <!-- ─── Open Graph ───────────────────────────────────────────────── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="S JAY Web Solutions" />
+    <meta property="og:title" content="Seneth Jayashan — Full-Stack Web Developer | S JAY Web Solutions" />
+    <meta property="og:description" content="Seneth Jayashan builds fast, animated, and conversion-focused websites. Founder of S JAY Web Solutions — React, Node.js, and full-stack development in Sri Lanka." />
+    <meta property="og:url" content="https://www.sjaywebsolutions.lk/" />
+    <meta property="og:image" content="https://www.sjaywebsolutions.lk/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="S JAY Web Solutions — Full-Stack Web Development by Seneth Jayashan" />
 
-    </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- ─── Twitter / X Card ─────────────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@SenethJay" />
+    <meta name="twitter:creator" content="@SenethJay" />
+    <meta name="twitter:title" content="Seneth Jayashan — Full-Stack Web Developer | S JAY Web Solutions" />
+    <meta name="twitter:description" content="Seneth Jayashan builds fast, animated, conversion-focused websites. Founder of S JAY Web Solutions, Colombo Sri Lanka." />
+    <meta name="twitter:image" content="https://www.sjaywebsolutions.lk/og-image.jpg" />
 
+    <!-- ─── Canonical & Alternate ────────────────────────────────────── -->
+    <link rel="canonical" href="https://www.sjaywebsolutions.lk/" />
+
+    <!-- ─── Icons & PWA ──────────────────────────────────────────────── -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#080e1c" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+
+    <!-- ─── Font Preconnects (performance) ───────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ─── Font Load ────────────────────────────────────────────────── -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <!-- ─── Baseline Structured Data ─────────────────────────────────── -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "ProfessionalService",
       "name": "S JAY Web Solutions (Pvt) Ltd",
-      "url": "https://www.sjaywebsolutions.com",
-      "logo": "https://www.sjaywebsolutions.com/logo.png",
-      "description": "Professional web design, development, and digital marketing services in Colombo, Sri Lanka.",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+94 70 399 9709",
-        "contactType": "customer service"
+      "founder": {
+        "@type": "Person",
+        "name": "Seneth Jayashan",
+        "jobTitle": "Founder & Full-Stack Developer",
+        "url": "https://www.sjaywebsolutions.lk",
+        "sameAs": [
+          "https://www.linkedin.com/company/seneth-jayashan/",
+          "https://github.com/Seneth-Jayashan",
+          "https://facebook.com/s.jay20/"
+        ]
       },
+      "url": "https://www.sjaywebsolutions.lk",
+      "logo": "https://www.sjaywebsolutions.lk/logo.png",
+      "image": "https://www.sjaywebsolutions.lk/og-image.jpg",
+      "description": "Full-stack web development, UI/UX design, and digital product engineering based in Colombo, Sri Lanka.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Colombo",
         "addressRegion": "Western Province",
         "addressCountry": "LK"
       },
-      "sameAs": [
-        "https://web.facebook.com/sjaysolutions",
-        "https://www.linkedin.com/company/s-jay-web-solutions-pvt-ltd"
-        // Add other social media profiles
-      ]
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 6.9271,
+        "longitude": 79.8612
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+94-70-3999-709",
+        "contactType": "customer service",
+        "email": "contact@sjaywebsolutions.lk",
+        "availableLanguage": "English"
+      },
+      "areaServed": "Worldwide",
+      "priceRange": "$$",
+      "serviceType": [
+        "Frontend Development",
+        "Backend Development",
+        "UI/UX Design",
+        "WordPress Development",
+        "Website Maintenance",
+        "Full-Stack Web Applications"
+      ],
+      "openingHours": "Mo-Fr 09:00-18:00"
     }
     </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Seneth Jayashan",
-      "url": "https://www.sjaywebsolutions.com/about", // Link to your about page
-      "sameAs": [
-        "https://linkedin.com/in/seneth-jayashan", // Your LinkedIn profile
-        "https://github.com/Seneth-Jayashan", // Your GitHub profile if applicable
-        "https://web.facebook.com/s.jay20/" // Your Facebook profile
-        // Add other personal social media/professional profiles
-      ]
-    }
-    </script>
+
+    <!-- Skip link for keyboard users -->
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        background: #080e1c;
+        color: #22d3ee;
+        padding: 0.5rem 1rem;
+        border-radius: 0 0 8px 8px;
+        font-size: 0.85rem;
+        z-index: 9999;
+        text-decoration: none;
+        transition: top 200ms;
+      }
+      .skip-link:focus { top: 0; }
+    </style>
+  </head>
+
+  <body>
+    <!-- Accessibility: skip to main content -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- React root -->
+    <div id="root"></div>
+
+    <!-- Vite entry -->
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

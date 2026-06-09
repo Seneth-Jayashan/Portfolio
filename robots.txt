@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or internal paths if they exist
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://www.sjaywebsolutions.lk/sitemap.xml
+
+# Crawl-delay for well-behaved bots (optional)
+Crawl-delay: 1
